@@ -1,4 +1,9 @@
 ## elasticsearch 说明文档
+### 启动
+```
+docker-compose up -d elasticsearch
+
+```
 
 ### 参数说明
 ```
