@@ -1,0 +1,25 @@
+version: '2'
+services:
+    elasticsearch:
+        image: alibeibei/elasticsearch:v1
+        restart: always
+        container_name: elasticsearch
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        environment:
+              XMS: 512m
+              XMX: 512m
+              NETWORK_HOST: 0.0.0.0
+              BOOTSTRAP_MEMORY_LOCK: 'false'
+              CLUSTER_NAME: "my-application"
+              NODE_NAME: "node-1"
+              NODE_MASTER: 'true'
+              NODE_DATA: 'true'
+              DISCOVERY_ZEN_MINIMUM_MASTER_NODES: 1
+              GATEWAY_RECOVER_AFTER_NODES: 3
+              ACTION_DESTRUCTIVE_REQUIRES_NAME: 'true'
+              HTTP_CORS_ENABLED: 'true'
+              HTTP_CORS_ALLOW_ORIGIN: '"*"'
+              DISCOVERY_ZEN_PING_UNICAST_HOSTS: '["172.16.100.43:9300"]'
+              NETWORK_PUBLISH_HOST: '172.16.100.43'
